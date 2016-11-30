@@ -6,7 +6,7 @@ ROS launch files starting the stereo camera calibration routines for the cameras
 
 **Authors: Karl Kangur  
 Contact: Martin Azkarate  
-Affiliation: Automatipon and Robotics Laboratories, ESTEC, ESA**
+Affiliation: Automation and Robotics Laboratories, ESTEC, ESA**
 
 ## Dependencies
 

@@ -1,0 +1,37 @@
+<!-- -*- mode: XML -*- -->
+
+<!-- Example launch file for a pair of stereo cameras. -->
+<launch>
+  <!-- Run both cameras in the stereo namespace -->
+  <group ns="stereo" >
+    <!-- Left camera -->
+    <node pkg="camera1394" type="camera1394_node" name="left_node" >
+      <!-- <rosparam file="$(find hdpr_stereo_calibration)/launch/left.yaml" /> -->
+      <remap from="camera" to="left" />
+      <param name="guid" value="00b09d0100dab9fe" />
+<!--      <param name="video_mode" value="1280x960_rgb8" /> -->
+      <param name="frame_id" value="left_camera" />
+<!--      <param name="auto_brightness" value="manual" />
+      <param name="brightness" value="200" /> -->
+      <param name="iso_speed" value="800" />
+      <param name="frame_rate" value="7.5" />
+<!--      <param name="auto_exposure" value="manual" />
+      <param name="exposure" value="200" /> -->
+    </node>
+
+    <!-- Right camera -->
+    <node pkg="camera1394" type="camera1394_node" name="right_node" >
+      <!-- <rosparam file="$(find hdpr_stereo_calibration)/launch/right.yaml" /> -->
+      <remap from="camera" to="right" />
+      <param name="guid" value="00b09d0100dab9ea" />
+<!--      <param name="video_mode" value="1280x960_rgb8" /> -->
+      <param name="frame_id" value="right_camera" />
+<!--      <param name="auto_brightness" value="manual" />
+      <param name="brightness" value="200" /> -->
+      <param name="iso_speed" value="800" />
+      <param name="frame_rate" value="7.5" />
+<!--      <param name="auto_exposure" value="manual" />
+      <param name="exposure" value="200" /> -->
+    </node>
+  </group>
+</launch>

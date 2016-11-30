@@ -1,0 +1,13 @@
+guid: 00b09d0100dab9ea
+video_mode: 1280x960_rgb8
+frame_id: right_camera
+iso_speed: 800
+frame_rate: 7.5
+#auto_brightness: manual
+#brightness: 100
+#auto_gain: manual
+#gain: 1
+auto_exposure: manual
+exposure: 100
+#auto_shutter: manual
+#shutter: 350

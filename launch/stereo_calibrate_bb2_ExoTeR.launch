@@ -1,0 +1,7 @@
+<launch>
+    <include file="$(find hdpr_stereo_calibration)/launch/bumblebee_firewire.launch">
+        <!-- Determine this using rosrun pointgrey_camera_driver list_cameras. If not specified, defaults to first camera found. -->
+        <arg name="bumblebee_serial" default="16081178" />
+    </include>
+</launch>
+

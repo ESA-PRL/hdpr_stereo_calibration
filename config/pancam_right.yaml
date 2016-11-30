@@ -1,0 +1,6 @@
+# Example camera parameters (right ART Unibrain Fire-i BCL 1.2)
+
+guid: 49712223535938026
+video_mode: 1280x960_mono8
+frame_id: right_camera
+#camera_info_url: package://camera1394/tests/unibrain_calibration.yaml

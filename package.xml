@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <name>hdpr_stereo_calibration</name>
+  <version>1.0.0</version>
+  <description>The HDPR stereo camera calibration routines</description>
+  <maintainer email="karl.kangur@esa.int">Karl Kangur</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>rospy</build_depend>
+  <run_depend>rospy</run_depend>
+</package>

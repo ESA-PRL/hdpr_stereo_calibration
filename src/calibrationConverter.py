@@ -19,11 +19,13 @@ import re
 import numpy as np
 #import shutil # to back up stereo yml
 import os.path
-
+from decimal import *
 from Tkinter import Tk
 from tkFileDialog import askopenfilename
-
 from transformations import euler_from_matrix
+
+# precision for Decimal
+getcontext().prec = 16
 
 cams = ['exoter_bb2','hdpr_bb2','hdpr_bb3_left_right','panCam']
 stereoFilePath = '/home/hdpr/dev/bundles/hdpr/config/orogen/stereo::Task.yml'
@@ -168,16 +170,16 @@ res += "\n    d3: " + distRight[3]
 res += "\n    width: " + width
 res += "\n    height: " + height
 if (cams[userIn-1] == "panCam"):
-    res += "\n    ex: 0"
-    res += "\n    ey: 0"
+    res += "\n    ex: 0.0"
+    res += "\n    ey: 0.0"
 res += "\n#Distance between left and right camera"
 res += "\n  extrinsic:"
-res += "\n    tx: " + str(tx)
-res += "\n    ty: " + str(ty)
-res += "\n    tz: " + str(tz)
-res += "\n    rx: " + str(rotEuler[0])
-res += "\n    ry: " + str(rotEuler[1])
-res += "\n    rz: " + str(rotEuler[2])
+res += "\n    tx: " + str(1*Decimal(tx))
+res += "\n    ty: " + str(1*Decimal(ty))
+res += "\n    tz: " + str(1*Decimal(tz))
+res += "\n    rx: " + str(1*Decimal(rotEuler[0]))
+res += "\n    ry: " + str(1*Decimal(rotEuler[1]))
+res += "\n    rz: " + str(1*Decimal(rotEuler[2]))
 
 print(res)
 

@@ -34,10 +34,12 @@ getcontext().prec = 16
 ## Ask for calibration results
 print("Please choose the files containing the Kalibr calibration output\n")
 #Tk().withdraw()
-calibResults = askopenfilename(title="Locate results-cam-kalibr.txt",
-                                   initialdir="~/Desktop")
-camChain = askopenfilename(title="Locate camchain-kalibr.yaml",
-                                   initialdir="~/Desktop")
+#calibResults = askopenfilename(title="Locate results-cam-kalibr.txt",
+                                   #initialdir="~/Desktop")
+#camChain = askopenfilename(title="Locate camchain-kalibr.yaml",
+                                   #initialdir="~/Desktop")
+calibResults = "/home/hdpr/Documents/kalibr_bag_files/bb2_bb3_pancam/results-cam-bb2_bb3_pancam.txt"
+camChain = "/home/hdpr/Documents/kalibr_bag_files/bb2_bb3_pancam/camchain-bb2_bb3_pancam.yaml"
 
 # kalibrs output files
 #camChain = 'camchain-kalibr.yaml'
@@ -83,9 +85,12 @@ quaternions = np.array(quaternions).astype(np.float)
 translation = np.array(translation).astype(np.float)*1e3 # ROCK needs the values in mm instead of meters
 tx,ty,tz = translation
 
+# let's use the rock convention
+quaternions = [quaternions[3], quaternions[0], quaternions[1], quaternions[2]]
+
 euler = euler_from_quaternion(quaternions, 'sxyz')
-# does it need to be flipped?
-#euler = np.array(euler).astype(np.float)*(-1)
+# ROCK needs these values flipped
+euler = np.array(euler).astype(np.float)*(-1)
 
 # PRINT RESULTS
 res =  "\nstereoCameraCalibration:"

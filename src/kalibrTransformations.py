@@ -307,6 +307,12 @@ print("BB2 Left:\nposition\n" + repr(pos_BB2Left) + "\nrotation\n" + repr(TF.eul
 print("BB3 Left:\nposition\n" + repr(pos_BB3Left) + "\nrotation\n" + repr(TF.euler_from_matrix(tf_Center_BB3Left)))
 print("PTU:\nposition\n" + repr(pos_PTU) + "\nrotation\n" + repr(TF.euler_from_matrix(tf_Center_PTU)))
 
+# Get output for stereo yml (BB3)
+tf_BB3Right_BB3Left = tf_BB3Center_BB3Left * tf_BB3Right_BB3Center
+m = TF.inverse_matrix(tf_BB3Right_BB3Left)
+print("\nBB3 Left to Right, Translation:\n" + repr(getT(m)*1e3))
+print("\nBB3 Left to Right, Rotation:\n" + repr(TF.euler_from_matrix(m)))
+
 #myPlotLine(pos_Center,pos_Target)
 #drawReference(pos_Target, TF.quaternion_from_matrix(tf_Center_Target))
 #

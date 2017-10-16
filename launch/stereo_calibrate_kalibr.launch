@@ -1,0 +1,76 @@
+<!-- -*- mode: XML -*- -->
+
+<launch>
+
+    <node pkg="nodelet" type="nodelet" name="camera_nodelet_manager" args="manager" />
+
+    <node pkg="nodelet" type="nodelet" name="right_nodet" args="load camera1394/driver camera_nodelet_manager">
+        <remap from="camera" to="pancam_right" />
+        <param name="guid" value="00b09d0100dab9ea" />
+        <param name="video_mode" value="1280x960_rgb8" />
+        <param name="frame_id" value="right_camera" />
+        <param name="iso_speed" value="800" />
+        <param name="frame_rate" value="3.5" />
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="left_node" args="load camera1394/driver camera_nodelet_manager">
+        <remap from="camera" to="pancam_left" />
+        <param name="guid" value="00b09d0100dab9fe" />
+        <param name="video_mode" value="1280x960_rgb8" />
+        <param name="frame_id" value="left_camera" />
+        <param name="iso_speed" value="800" />
+        <param name="frame_rate" value="3.75" />
+    </node>
+    
+    <!--<node pkg="nodelet" type="nodelet" name="bb3" args="load camera1394/driver camera_nodelet_manager">
+        <remap from="camera/image_raw" to="bb3/camera/image_raw" />
+        <param name="video_mode" value="format7_mode3" />
+        <param name="guid" value="00b09d0100f6b432" />
+        <param name="format7_color_coding" value="rgb8" />
+        <param name="bayer_pattern" value="gbrg" />
+        <param name="bayer_method" value="" />
+        <param name="frame_id" value="bb3" />
+        <param name="frame_rate" value="3.75" />
+        <param name="iso_speed" value="800" /> 
+    </node>
+
+    <node pkg="bumblebee_xb3" type="bumblebee_xb3_node" name="debayer" ns="bb3" />-->
+    
+    <node pkg="nodelet" type="nodelet" name="bb2" args="load camera1394/driver camera_nodelet_manager">
+        <remap from="camera/image_raw" to="bb2/camera/image_raw" />
+        <remap from="camera/set_camera_info" to="bb2/camera/set_camera_info" />
+        <remap from="camera/get_camera_registers" to="bb2/camera/get_camera_registers" />
+        <remap from="camera/set_camera_registers" to="bb2/camera/set_camera_registers" />
+        
+        <param name="video_mode" value="1024x768_rgb8" />
+        <!--<param name="video_mode" value="format7_mode3" />-->
+        
+        <param name="guid" value="00b09d0100dcb1bb" />
+        <param name="bayer_pattern" value="gbrg" />
+        <param name="frame_id" value="bb2" />
+        <param name="frame_rate" value="3.75" />
+        <param name="iso_speed" value="400" /> 
+    </node>
+    
+    <!-- Do not use together with camera1394 driver -->
+    <!--<node pkg="nodelet" type="nodelet" name="bumblebee_nodelet" args="load pointgrey_camera_driver/PointGreyStereoCameraNodelet camera_nodelet_manager">
+        <param name="frame_id" value="bb2" />
+        <param name="frame_rate" value="3.75" />
+        <param name="first_namespace" value="left" />
+        <param name="second_namespace" value="right" />
+        <param name="format7_color_coding" value="raw16" />
+        <param name="serial" value="14463419" />
+    </node>
+    
+    <node pkg="nodelet" type="nodelet" name="image_proc_debayer_left" args="load image_proc/debayer camera_nodelet_manager">
+        <remap from="image_raw" to="left/image_raw"/>
+        <remap from="image_mono" to="left/image_mono"/>
+        <remap from="image_color" to="left/image_color"/>
+    </node>
+    <node pkg="nodelet" type="nodelet" name="image_proc_debayer_right" args="load image_proc/debayer camera_nodelet_manager">
+        <remap from="image_raw" to="right/image_raw"/>
+        <remap from="image_mono" to="right/image_mono"/>
+        <remap from="image_color" to="right/image_color"/>
+    </node>-->
+  
+</launch>

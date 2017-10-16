@@ -50,21 +50,56 @@ fCamChain = f.read()
 f.close()
 data = yaml.load(fCamChain)
 
-fxLeft    = data['cam5']['intrinsics'][0]
-fyLeft    = data['cam5']['intrinsics'][1]
-cxLeft    = data['cam5']['intrinsics'][2]
-cyLeft    = data['cam5']['intrinsics'][3]
-widthL    = data['cam5']['resolution'][0]
-heightL   = data['cam5']['resolution'][1]
-distLeft  = data['cam5']['distortion_coeffs']
+# BB2
+#fxLeft    = data['cam0']['intrinsics'][0]
+#fyLeft    = data['cam0']['intrinsics'][1]
+#cxLeft    = data['cam0']['intrinsics'][2]
+#cyLeft    = data['cam0']['intrinsics'][3]
+#widthL    = data['cam0']['resolution'][0]
+#heightL   = data['cam0']['resolution'][1]
+#distLeft  = data['cam0']['distortion_coeffs']
+#
+#fxRight   = data['cam1']['intrinsics'][0]
+#fyRight   = data['cam1']['intrinsics'][1]
+#cxRight   = data['cam1']['intrinsics'][2]
+#cyRight   = data['cam1']['intrinsics'][3]
+#width     = data['cam1']['resolution'][0]
+#height    = data['cam1']['resolution'][1]
+#distRight = data['cam1']['distortion_coeffs']
 
-fxRight   = data['cam6']['intrinsics'][0]
-fyRight   = data['cam6']['intrinsics'][1]
-cxRight   = data['cam6']['intrinsics'][2]
-cyRight   = data['cam6']['intrinsics'][3]
-width     = data['cam6']['resolution'][0]
-height    = data['cam6']['resolution'][1]
-distRight = data['cam6']['distortion_coeffs']
+# BB3
+fxLeft    = data['cam2']['intrinsics'][0]
+fyLeft    = data['cam2']['intrinsics'][1]
+cxLeft    = data['cam2']['intrinsics'][2]
+cyLeft    = data['cam2']['intrinsics'][3]
+widthL    = data['cam2']['resolution'][0]
+heightL   = data['cam2']['resolution'][1]
+distLeft  = data['cam2']['distortion_coeffs']
+
+fxRight   = data['cam4']['intrinsics'][0]
+fyRight   = data['cam4']['intrinsics'][1]
+cxRight   = data['cam4']['intrinsics'][2]
+cyRight   = data['cam4']['intrinsics'][3]
+width     = data['cam4']['resolution'][0]
+height    = data['cam4']['resolution'][1]
+distRight = data['cam4']['distortion_coeffs']
+
+# PanCam
+#fxLeft    = data['cam5']['intrinsics'][0]
+#fyLeft    = data['cam5']['intrinsics'][1]
+#cxLeft    = data['cam5']['intrinsics'][2]
+#cyLeft    = data['cam5']['intrinsics'][3]
+#widthL    = data['cam5']['resolution'][0]
+#heightL   = data['cam5']['resolution'][1]
+#distLeft  = data['cam5']['distortion_coeffs']
+#
+#fxRight   = data['cam6']['intrinsics'][0]
+#fyRight   = data['cam6']['intrinsics'][1]
+#cxRight   = data['cam6']['intrinsics'][2]
+#cyRight   = data['cam6']['intrinsics'][3]
+#width     = data['cam6']['resolution'][0]
+#height    = data['cam6']['resolution'][1]
+#distRight = data['cam6']['distortion_coeffs']
 
 if (int(width) != int(widthL) or int(height) != int(heightL)):
     print('Dimensions of left and right pancam do not fit or the cameras have been reordered. Aborting!')
@@ -77,7 +112,7 @@ f = open(calibResults, 'r')
 fCalibResults = f.read()
 f.close()
 
-reExtrinsics = '(?<=baseline T_6_5\:\n)(.*)\n(.*)'
+reExtrinsics = '(?<=baseline T_3_2\:\n)(.*)\n(.*)'
 extrinsics = re.search(reExtrinsics, fCalibResults).group(0)
 quaternions = re.search('(?<=q\:\s\[)(\s*-?\d+.\d+){4}', extrinsics).group(0).split()
 translation = re.search('(?<=t\:\s\[)(\s*-?\d+.\d+){3}', extrinsics).group(0).split()

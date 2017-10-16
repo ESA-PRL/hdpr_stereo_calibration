@@ -32,5 +32,14 @@
 <!--      <param name="auto_exposure" value="manual" />
       <param name="exposure" value="200" /> -->
     </node>
+  
+    <node name="image_proc" pkg="image_proc" type="image_proc" ns="left">
+      <remap from="camera/image_raw" to="/stereo/left/image_raw" />
+    </node>
+  
+    <node name="image_proc" pkg="image_proc" type="image_proc" ns="right">
+      <remap from="camera/image_raw" to="/stereo/right/image_raw" />
+    </node>
+    
   </group>
 </launch>

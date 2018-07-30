@@ -1,7 +1,17 @@
 <launch>
-    <include file="$(find hdpr_stereo_calibration)/launch/bumblebee_firewire.launch">
-        <!-- Determine this using rosrun pointgrey_camera_driver list_cameras. If not specified, defaults to first camera found. -->
-        <arg name="bumblebee_serial" default="16167986" />
-    </include>
+
+  <node pkg="camera1394stereo" type="camera1394stereo_node" name="camera1394stereo_node" output="screen" >
+    <param name="guid" value="00b09d01008006f3" />
+    <param name="video_mode" value="format7_mode3" />
+    <param name="format7_color_coding" value="raw16" />
+    <param name="bayer_pattern" value="grbg" />
+    <param name="bayer_method" value="" />
+    <param name="iso_speed" value="400" />
+    <param name="frame_rate" value="15" />
+    <param name="stereo_method" value="Interlaced" />
+    <param name="camera_info_url_left" value="" />
+    <param name="camera_info_url_right" value="" />
+  </node>
+
 </launch>
 

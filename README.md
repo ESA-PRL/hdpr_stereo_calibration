@@ -14,6 +14,7 @@ Affiliation: Automation and Robotics Laboratories, ESTEC, ESA**
 * [pointgrey_camera_driver](http://wiki.ros.org/pointgrey_camera_driver)
 * [image_proc](http://wiki.ros.org/image_proc)
 * [camera1394](http://wiki.ros.org/camera1394)
+* [camera1394stereo](http://wiki.ros.org/camera1394stereo)
 
 ## Basic Usage
 

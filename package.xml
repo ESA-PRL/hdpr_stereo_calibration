@@ -8,4 +8,7 @@
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>rospy</build_depend>
   <run_depend>rospy</run_depend>
+  <run_depend>camera_calibration</run_depend>
+  <run_depend>camera1394</run_depend>
+  <run_depend>camera1394stereo</run_depend>
 </package>
